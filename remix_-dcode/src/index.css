@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&family=Press+Start+2P&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Orbitron", sans-serif;
+  --font-pixel: "Press Start 2P", monospace;
+
+  /* Vibrant Palette Colors */
+  --color-dcode-bg: #0a0e1a;
+  --color-dcode-blue: #00f2ff;
+  --color-dcode-cyan: #00f2ff;
+  --color-dcode-teal: #22c55e;
+  --color-dcode-purple: #ff00ff;
+  --color-dcode-magenta: #ff00ff;
+  --color-dcode-yellow: #ffcc00;
+  --color-dcode-orange: #ff6b00;
+  
+  --color-text-main: #ffffff;
+  --color-text-muted: #94a3b8;
+  --color-card-glass: rgba(255, 255, 255, 0.05);
+  --color-border-glass: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-[#0a0e1a] text-white font-sans antialiased overflow-x-hidden;
+    background-image: linear-gradient(145deg, #0d1224, #1a1a3a, #0b253a);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+  }
+  
+  .neon-border {
+    @apply border-dcode-cyan shadow-[0_0_15px_rgba(0,242,255,0.5)];
+  }
+
+  .neon-text {
+    @apply text-dcode-cyan drop-shadow-[0_0_8px_rgba(0,242,255,0.8)];
+  }
+
+  .interactive-button {
+    @apply relative overflow-hidden transition-all duration-300 active:scale-95 hover:brightness-110;
+  }
+
+  .btn-premium {
+    @apply bg-dcode-yellow text-black font-black uppercase rounded-xl tracking-tight shadow-[0_4px_0_#b45309] active:shadow-none active:translate-y-1 transition-all;
+  }
+
+  .pixel-art-button {
+    image-rendering: pixelated;
+    @apply transition-all duration-75 active:translate-y-1;
+    box-shadow: 0 8px 0 rgba(0,0,0,0.5);
+  }
+  
+  .pixel-art-button:active {
+    box-shadow: 0 0 0 rgba(0,0,0,0.5);
+  }
+}
+
+.orb {
+  @apply fixed rounded-full blur-[100px] z-0 opacity-40 pointer-events-none;
+}
+.orb-1 {
+  @apply w-[400px] h-[400px] top-[-100px] left-[-100px] bg-dcode-cyan;
+}
+.orb-2 {
+  @apply w-[300px] h-[300px] bottom-[-50px] right-[-50px] bg-dcode-purple;
+}
+
+@keyframes matrix {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 100%; }
+}
+
+.matrix-bg {
+  background-image: linear-gradient(0deg, rgba(0,242,255,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,242,255,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  animation: matrix 60s linear infinite;
+}
+
+.pixel-art {
+  image-rendering: pixelated;
+}
